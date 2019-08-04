@@ -13,7 +13,8 @@
 			   base16-theme
 			   rust-mode
 			   lsp-mode
-			   paredit))
+			   paredit
+			   org))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -35,6 +36,12 @@
 ;; Alt (meta) is used in i3wm, allow super key to be used
 (setq x-super-keysym 'meta)
 
+;; Navigation (like i3wm and vim)
+(global-set-key (kbd "M-h") 'windmove-left) ;; replace mark-paragraph
+(global-set-key (kbd "M-j") 'windmove-down) ;; replace indent-new-comment-line
+(global-set-key (kbd "M-k") 'windmove-up) ;; replace kill-sentence
+(global-set-key (kbd "M-l") 'windmove-right) ;; replace downcase-word
+
 ;; evil mode
 (require 'evil)
 (evil-mode 1)
@@ -52,6 +59,9 @@
 (global-display-line-numbers-mode)
 
 (load-theme 'base16-tomorrow-night t)
+
+;; default frame font config
+(set-frame-font "Source Code Pro 15" nil t)
 
 ;; Rust
 (setq rust-format-on-save t)
