@@ -3,22 +3,22 @@
 
 * Require
 #+begin_src emacs-lisp
-(require 'org)
-(require 'evil)
-(require 'lsp-mode)
+  (require 'org)
+  (require 'evil)
+  (require 'lsp-mode)
 #+end_src
 
 * Keybindings
 #+begin_src emacs-lisp
-;; Alt (meta) is used in i3wm, allow super key to be used
-  (setq x-super-keysym 'meta)
-;; Navigation (like i3wm and vim)
-(global-set-key (kbd "M-h") 'windmove-left) ;; replace mark-paragraph
-(global-set-key (kbd "M-j") 'windmove-down) ;; replace indent-new-comment-line
-(global-set-key (kbd "M-k") 'windmove-up) ;; replace kill-sentence
-(global-set-key (kbd "M-l") 'windmove-right) ;; replace downcase-word
+  ;; Alt (meta) is used in i3wm, allow super key to be used
+    (setq x-super-keysym 'meta)
+  ;; Navigation (like i3wm and vim)
+  (global-set-key (kbd "M-h") 'windmove-left) ;; replace mark-paragraph
+  (global-set-key (kbd "M-j") 'windmove-down) ;; replace indent-new-comment-line
+  (global-set-key (kbd "M-k") 'windmove-up) ;; replace kill-sentence
+  (global-set-key (kbd "M-l") 'windmove-right) ;; replace downcase-word
 
-(define-key org-mode-map (kbd "M-h") 'windmove-left) ;; not overriden by global-set-key
+  (define-key org-mode-map (kbd "M-h") 'windmove-left) ;; not overriden by global-set-key
 #+end_src
 
 ** Evil
@@ -28,34 +28,34 @@
 
 * Visual
 #+begin_src emacs-lisp
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1)
 
-(show-paren-mode 1)
-(setq show-paren-delay 0)
+  (show-paren-mode 1)
+  (setq show-paren-delay 0)
 
-;; Built in line numbers now, yay!
-(setq display-line-numbers 'relative)
-(global-display-line-numbers-mode)
+  ;; Built in line numbers now, yay!
+  (setq display-line-numbers 'relative)
+  (global-display-line-numbers-mode)
 
-(load-theme 'base16-tomorrow-night t)
+  (load-theme 'base16-tomorrow-night t)
 
-;; default frame font config
-(set-frame-font "Source Code Pro 15" nil t)
+  ;; default frame font config
+  (set-frame-font "Source Code Pro 15" nil t)
 #+end_src
 
 * Language Support
 ** LSP
 #+begin_src emacs-lisp
-;; Currently no snippet support installed (Yasnippet), disable to avoid warnings
-(setq lsp-enable-snippet nil)
-(setq lsp-enable-completion-at-point t)
+  ;; Currently no snippet support installed (Yasnippet), disable to avoid warnings
+  (setq lsp-enable-snippet nil)
+  (setq lsp-enable-completion-at-point t)
 #+end_src
 
 ** Rust
 #+begin_src emacs-lisp
-(setq rust-format-on-save t)
-(add-hook 'rust-mode-hook #'lsp)
+  (setq rust-format-on-save t)
+  (add-hook 'rust-mode-hook #'lsp)
 #+end_src
 
