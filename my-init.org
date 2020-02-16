@@ -53,9 +53,3 @@
   (setq lsp-enable-completion-at-point t)
 #+end_src
 
-** Rust
-#+begin_src emacs-lisp
-  (setq rust-format-on-save t)
-  (add-hook 'rust-mode-hook #'lsp)
-#+end_src
-
