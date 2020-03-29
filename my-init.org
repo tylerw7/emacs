@@ -4,6 +4,8 @@
 * Require
 #+begin_src emacs-lisp
   (require 'org)
+  ;; stop evil from taking over TAB in org mode (-nw)
+  (setq evil-want-C-i-jump nil)
   (require 'evil)
   (require 'lsp-mode)
 #+end_src
@@ -11,19 +13,22 @@
 * Keybindings
 #+begin_src emacs-lisp
   ;; Alt (meta) is used in i3wm, allow super key to be used
-    (setq x-super-keysym 'meta)
+  (setq x-super-keysym 'meta)
   ;; Navigation (like i3wm and vim)
   (global-set-key (kbd "M-h") 'windmove-left) ;; replace mark-paragraph
   (global-set-key (kbd "M-j") 'windmove-down) ;; replace indent-new-comment-line
   (global-set-key (kbd "M-k") 'windmove-up) ;; replace kill-sentence
   (global-set-key (kbd "M-l") 'windmove-right) ;; replace downcase-word
-
   (define-key org-mode-map (kbd "M-h") 'windmove-left) ;; not overriden by global-set-key
+
+  ;; same clipboard copy/paste keybindings as other programs
+  (global-set-key (kbd "M-c") 'clipboard-kill-ring-save) ;; replace capitalize-word
+  (global-set-key (kbd "M-v") 'clipboard-yank) ;; replace scroll-down
 #+end_src
 
 ** Evil
 #+begin_src emacs-lisp
-(evil-mode 1)
+  (evil-mode 1)
 #+end_src
 
 * Visual
@@ -35,11 +40,21 @@
   (show-paren-mode 1)
   (setq show-paren-delay 0)
 
-  ;; Built in line numbers now, yay!
-  (setq display-line-numbers 'relative)
+  ;; relative line numbers, use built in
+  (setq display-line-numbers-type 'relative)
   (global-display-line-numbers-mode)
+  ;; (setq linum-relative-current-symbol ">")
+  ;; (setq linum-relative-backend 'display-line-numbers-mode)
+  ;; (linum-relative-global-mode)
 
-  (load-theme 'base16-tomorrow-night t)
+  ;; (load-theme 'base16-tomorrow-night t)
+  ;; (load-theme 'base16-tomorrow t)
+  ;; (load-theme 'base16-darktooth t)
+  ;; (load-theme 'base16-summerfruit-dark t)
+  ;; (load-theme 'base16-synth-midnight-dark)
+  ;; (load-theme 'base16-bright t)
+  (set-background-color "black")
+  (set-foreground-color "white")
 
   ;; default frame font config
   (set-frame-font "Source Code Pro 15" nil t)
@@ -51,5 +66,11 @@
   ;; Currently no snippet support installed (Yasnippet), disable to avoid warnings
   (setq lsp-enable-snippet nil)
   (setq lsp-enable-completion-at-point t)
+#+end_src
+
+** C
+#+begin_src emacs-lisp
+  (setq c-default-style "linux")
+  (require 'xcscope)
 #+end_src
 

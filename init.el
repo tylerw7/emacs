@@ -9,6 +9,8 @@
 (setq package-list '(rainbow-delimiters
 			   multiple-cursors
 			   evil
+			   evil-magit
+			   magit
 			   base16-theme
 			   lsp-mode
 			   paredit
@@ -21,7 +23,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil paredit lsp-mode multiple-cursors rainbow-delimiters base16-theme))))
+    (evil-magit magit evil paredit lsp-mode multiple-cursors rainbow-delimiters base16-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

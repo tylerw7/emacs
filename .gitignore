@@ -5,3 +5,4 @@ url
 *~
 .lsp-session-v1
 my-init.el
+transient
