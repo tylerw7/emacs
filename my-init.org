@@ -7,7 +7,14 @@
   ;; stop evil from taking over TAB in org mode (-nw)
   (setq evil-want-C-i-jump nil)
   (require 'evil)
-  (require 'lsp-mode)
+  ;; (require 'lsp-mode)
+#+end_src
+
+* Functions
+#+begin_src emacs-lisp
+  (defun reload-user-init-file ()
+    (interactive)
+    (load-file user-init-file))
 #+end_src
 
 * Keybindings
@@ -33,10 +40,14 @@
 
 * Visual
 #+begin_src emacs-lisp
+  ;; General
   (menu-bar-mode -1)
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
+  (set-frame-parameter (selected-frame) 'alpha '(100 100))
+  (load-theme 'dracula t)
 
+  ;; Parenthesis
   (show-paren-mode 1)
   (setq show-paren-delay 0)
 
@@ -47,15 +58,6 @@
   ;; (setq linum-relative-backend 'display-line-numbers-mode)
   ;; (linum-relative-global-mode)
 
-  ;; (load-theme 'base16-tomorrow-night t)
-  ;; (load-theme 'base16-tomorrow t)
-  ;; (load-theme 'base16-darktooth t)
-  ;; (load-theme 'base16-summerfruit-dark t)
-  ;; (load-theme 'base16-synth-midnight-dark)
-  ;; (load-theme 'base16-bright t)
-  (set-background-color "black")
-  (set-foreground-color "white")
-
   ;; default frame font config
   (set-frame-font "Source Code Pro 15" nil t)
 #+end_src
@@ -64,13 +66,23 @@
 ** LSP
 #+begin_src emacs-lisp
   ;; Currently no snippet support installed (Yasnippet), disable to avoid warnings
-  (setq lsp-enable-snippet nil)
-  (setq lsp-enable-completion-at-point t)
+  ;; (setq lsp-enable-snippet nil)
+  ;; (setq lsp-enable-completion-at-point t)
 #+end_src
 
 ** C
 #+begin_src emacs-lisp
   (setq c-default-style "linux")
   (require 'xcscope)
+#+end_src
+
+** Lisp
+#+begin_src emacs-lisp
+  (defun lisp-mode-hooks ()
+    (rainbow-delimiters-mode)
+    (enable-paredit-mode))
+  (add-hook 'scheme-mode-hook #'lisp-mode-hooks)
+  (add-hook 'lisp-mode-hook #'lisp-mode-hooks)
+  (add-hook 'emacs-lisp-mode-hook #'lisp-mode-hooks)
 #+end_src
 
