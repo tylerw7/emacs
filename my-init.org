@@ -63,11 +63,12 @@
 #+end_src
 
 * Language Support
-** LSP
+** Completion
 #+begin_src emacs-lisp
   ;; Currently no snippet support installed (Yasnippet), disable to avoid warnings
   ;; (setq lsp-enable-snippet nil)
   ;; (setq lsp-enable-completion-at-point t)
+  (add-hook 'after-init-hook 'global-company-mode)
 #+end_src
 
 ** C
